@@ -1,0 +1,277 @@
+---
+import { useTranslations } from '../i18n/utils';
+import { Shield, GitBranch, Zap, ArrowRight, Github, Check, X, Download, Terminal, Monitor, Laptop, WifiOff, Gauge } from 'lucide-react';
+
+interface Props {
+  lang: 'en' | 'zh';
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<div class="relative overflow-hidden">
+  <!-- Hero Section -->
+  <div class="relative pt-24 pb-12 lg:pt-32 lg:pb-24">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      
+      <!-- Hero Badge -->
+      <div class="inline-flex items-center px-4 py-1.5 rounded-full border border-blue-200 dark:border-blue-900 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-sm font-semibold mb-8 animate-fade-in-up">
+        <span class="relative flex h-2 w-2 mr-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+        </span>
+        {t('hero.badge')}
+      </div>
+
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-8">
+        <span class="block text-gray-900 dark:text-white mb-2">{t('hero.title').split(':')[0]}</span>
+        <span class="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+          {t('hero.title').split(':')[1]}
+        </span>
+      </h1>
+      <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-500 dark:text-gray-400">
+        {t('hero.subtitle')}
+      </p>
+      
+      <div class="mt-10 flex flex-col sm:flex-row justify-center gap-4">
+        <a href="#download" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-all shadow-lg hover:shadow-blue-500/30 transform hover:-translate-y-0.5">
+          <Download className="mr-2 h-5 w-5" />
+          {t('nav.download')}
+        </a>
+        <a href="https://github.com/mamahuhu-io/auk" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-6 py-3 border border-gray-300 dark:border-gray-700 text-base font-medium rounded-md text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors shadow-sm hover:shadow-md">
+          <Github className="mr-2 h-5 w-5" />
+          {t('cta.github')}
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Screenshot Placeholder -->
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 mb-24">
+    <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-gray-900 aspect-video flex items-center justify-center group ring-1 ring-white/10">
+      <img 
+        src="/connection-to-self-hosted-instance.png" 
+        alt="Auk Application Screenshot" 
+        class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"
+        onerror="this.style.display='none'"
+      />
+      <div class="text-center p-8 z-0">
+        <Monitor className="w-16 h-16 mx-auto text-gray-400 mb-4 group-hover:text-blue-500 transition-colors duration-300" />
+         <p class="text-gray-500 dark:text-gray-400 font-medium text-lg">
+          {lang === 'zh' ? '在此处放置应用截图' : 'Application Screenshot Placeholder'}
+        </p>
+        <p class="text-sm text-gray-400 dark:text-gray-500 mt-2">
+          (Optional: Place /public/connection-to-self-hosted-instance.png to show real screenshot)
+        </p>
+      </div>
+      <!-- Overlay gradient -->
+      <div class="absolute inset-0 bg-gradient-to-t from-gray-900/10 to-transparent pointer-events-none"></div>
+    </div>
+  </div>
+
+  <!-- Features Section -->
+  <div id="features" class="py-24 bg-gray-50 dark:bg-gray-900/50">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl">
+          {t('features.title')}
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Feature 1: Local & Private -->
+        <div class="relative p-8 bg-white dark:bg-gray-800 rounded-2xl shadow-sm hover:shadow-xl hover:shadow-green-500/10 transition-all border border-gray-100 dark:border-gray-700 group">
+          <div class="absolute top-0 -translate-y-1/2 left-8 inline-flex items-center justify-center p-3 bg-green-600 rounded-xl shadow-lg group-hover:scale-110 transition-transform">
+            <Shield className="h-6 w-6 text-white" />
+          </div>
+          <h3 class="mt-4 text-xl font-bold text-gray-900 dark:text-white">
+            {t('features.local.title')}
+          </h3>
+          <p class="mt-4 text-gray-500 dark:text-gray-400 leading-relaxed">
+            {t('features.local.desc')}
+          </p>
+        </div>
+
+        <!-- Feature 2: Git Sync -->
+        <div class="relative p-8 bg-white dark:bg-gray-800 rounded-2xl shadow-sm hover:shadow-xl hover:shadow-blue-500/10 transition-all border border-gray-100 dark:border-gray-700 group">
+          <div class="absolute top-0 -translate-y-1/2 left-8 inline-flex items-center justify-center p-3 bg-blue-600 rounded-xl shadow-lg group-hover:scale-110 transition-transform">
+            <GitBranch className="h-6 w-6 text-white" />
+          </div>
+          <h3 class="mt-4 text-xl font-bold text-gray-900 dark:text-white">
+            {t('features.git.title')}
+          </h3>
+          <p class="mt-4 text-gray-500 dark:text-gray-400 leading-relaxed">
+            {t('features.git.desc')}
+          </p>
+        </div>
+
+        <!-- Feature 3: Power Tools -->
+        <div class="relative p-8 bg-white dark:bg-gray-800 rounded-2xl shadow-sm hover:shadow-xl hover:shadow-indigo-500/10 transition-all border border-gray-100 dark:border-gray-700 group">
+          <div class="absolute top-0 -translate-y-1/2 left-8 inline-flex items-center justify-center p-3 bg-indigo-600 rounded-xl shadow-lg group-hover:scale-110 transition-transform">
+            <Zap className="h-6 w-6 text-white" />
+          </div>
+          <h3 class="mt-4 text-xl font-bold text-gray-900 dark:text-white">
+            {t('features.power.title')}
+          </h3>
+          <p class="mt-4 text-gray-500 dark:text-gray-400 leading-relaxed">
+            {t('features.power.desc')}
+          </p>
+          <!-- Protocol tags -->
+          <div class="mt-4 flex flex-wrap gap-2">
+            {['REST', 'GraphQL', 'WebSocket', 'SSE', 'MQTT'].map((proto) => (
+              <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300">
+                {proto}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Comparison Section -->
+  <div id="about" class="py-24 bg-white dark:bg-gray-950">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl">
+          {t('comparison.title')}
+        </h2>
+      </div>
+
+      <div class="max-w-4xl mx-auto overflow-hidden shadow-lg ring-1 ring-black ring-opacity-5 rounded-xl">
+        <table class="min-w-full divide-y divide-gray-300 dark:divide-gray-700">
+          <thead class="bg-gray-50 dark:bg-gray-800">
+            <tr>
+              <th scope="col" class="py-4 pl-6 pr-3 text-left text-sm font-semibold text-gray-900 dark:text-white">{t('comparison.feature')}</th>
+              <th scope="col" class="px-3 py-4 text-center text-sm font-bold text-blue-600 dark:text-blue-400 text-lg bg-blue-50/50 dark:bg-blue-900/20">{t('comparison.auk')}</th>
+              <th scope="col" class="px-3 py-4 text-center text-sm font-semibold text-gray-500 dark:text-gray-400">{t('comparison.others')}</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200 dark:divide-gray-700 bg-white dark:bg-gray-900">
+            <!-- Row 1: User Account -->
+            <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+              <td class="whitespace-nowrap py-4 pl-6 pr-3 text-sm font-medium text-gray-900 dark:text-white">{t('comparison.row1')}</td>
+              <td class="whitespace-nowrap px-3 py-4 text-sm text-center text-green-600 dark:text-green-400 font-medium bg-blue-50/30 dark:bg-blue-900/10">
+                <Check className="inline w-5 h-5 mr-1 align-text-bottom" />
+                {t('comparison.row1.auk')}
+              </td>
+              <td class="whitespace-nowrap px-3 py-4 text-sm text-center text-gray-500 dark:text-gray-400">
+                <X className="inline w-5 h-5 mr-1 align-text-bottom text-red-500" />
+                {t('comparison.row1.others')}
+              </td>
+            </tr>
+             <!-- Row 2: Data Storage -->
+             <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+              <td class="whitespace-nowrap py-4 pl-6 pr-3 text-sm font-medium text-gray-900 dark:text-white">{t('comparison.row2')}</td>
+              <td class="whitespace-nowrap px-3 py-4 text-sm text-center text-blue-600 dark:text-blue-400 font-medium bg-blue-50/30 dark:bg-blue-900/10">
+                {t('comparison.row2.auk')}
+              </td>
+              <td class="whitespace-nowrap px-3 py-4 text-sm text-center text-gray-500 dark:text-gray-400">
+                {t('comparison.row2.others')}
+              </td>
+            </tr>
+            <!-- Row 3: Privacy -->
+            <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+              <td class="whitespace-nowrap py-4 pl-6 pr-3 text-sm font-medium text-gray-900 dark:text-white">{t('comparison.row3')}</td>
+              <td class="whitespace-nowrap px-3 py-4 text-sm text-center text-green-600 dark:text-green-400 font-medium bg-blue-50/30 dark:bg-blue-900/10">
+                <Shield className="inline w-5 h-5 mr-1 align-text-bottom" />
+                {t('comparison.row3.auk')}
+              </td>
+              <td class="whitespace-nowrap px-3 py-4 text-sm text-center text-gray-500 dark:text-gray-400">
+                 {t('comparison.row3.others')}
+              </td>
+            </tr>
+             <!-- Row 4: Cost -->
+             <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+              <td class="whitespace-nowrap py-4 pl-6 pr-3 text-sm font-medium text-gray-900 dark:text-white">{t('comparison.row4')}</td>
+              <td class="whitespace-nowrap px-3 py-4 text-sm text-center text-green-600 dark:text-green-400 font-medium bg-blue-50/30 dark:bg-blue-900/10">
+                {t('comparison.row4.auk')}
+              </td>
+              <td class="whitespace-nowrap px-3 py-4 text-sm text-center text-gray-500 dark:text-gray-400">
+                 {t('comparison.row4.others')}
+              </td>
+            </tr>
+            <!-- Row 5: Offline Mode -->
+            <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+              <td class="whitespace-nowrap py-4 pl-6 pr-3 text-sm font-medium text-gray-900 dark:text-white">{t('comparison.row5')}</td>
+              <td class="whitespace-nowrap px-3 py-4 text-sm text-center text-green-600 dark:text-green-400 font-medium bg-blue-50/30 dark:bg-blue-900/10">
+                <WifiOff className="inline w-5 h-5 mr-1 align-text-bottom" />
+                {t('comparison.row5.auk')}
+              </td>
+              <td class="whitespace-nowrap px-3 py-4 text-sm text-center text-gray-500 dark:text-gray-400">
+                 {t('comparison.row5.others')}
+              </td>
+            </tr>
+             <!-- Row 6: Speed -->
+             <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+              <td class="whitespace-nowrap py-4 pl-6 pr-3 text-sm font-medium text-gray-900 dark:text-white">{t('comparison.row6')}</td>
+              <td class="whitespace-nowrap px-3 py-4 text-sm text-center text-blue-600 dark:text-blue-400 font-medium bg-blue-50/30 dark:bg-blue-900/10">
+                <Gauge className="inline w-5 h-5 mr-1 align-text-bottom" />
+                {t('comparison.row6.auk')}
+              </td>
+              <td class="whitespace-nowrap px-3 py-4 text-sm text-center text-gray-500 dark:text-gray-400">
+                 {t('comparison.row6.others')}
+              </td>
+            </tr>
+            <!-- Row 7: Collaboration -->
+             <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+              <td class="whitespace-nowrap py-4 pl-6 pr-3 text-sm font-medium text-gray-900 dark:text-white">{t('comparison.row7')}</td>
+              <td class="whitespace-nowrap px-3 py-4 text-sm text-center text-blue-600 dark:text-blue-400 font-medium bg-blue-50/30 dark:bg-blue-900/10">
+                <GitBranch className="inline w-5 h-5 mr-1 align-text-bottom" />
+                {t('comparison.row7.auk')}
+              </td>
+              <td class="whitespace-nowrap px-3 py-4 text-sm text-center text-gray-500 dark:text-gray-400">
+                 {t('comparison.row7.others')}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Download Section -->
+  <div id="download" class="py-24 bg-gray-50 dark:bg-gray-900/50 border-t border-gray-200 dark:border-gray-800">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl mb-4">
+        {t('download.title')}
+      </h2>
+      <p class="text-xl text-gray-500 dark:text-gray-400 mb-12">
+        {t('download.subtitle')}
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-6">
+        <!-- macOS -->
+        <a href="https://github.com/mamahuhu-io/auk/releases" class="group relative flex flex-col items-center p-6 bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-xl transition-all border border-gray-200 dark:border-gray-700 w-64">
+          <div class="p-3 bg-gray-100 dark:bg-gray-700 rounded-full mb-4 group-hover:scale-110 transition-transform">
+             <Laptop className="w-8 h-8 text-gray-900 dark:text-white" />
+          </div>
+          <span class="text-lg font-semibold text-gray-900 dark:text-white mb-2">macOS</span>
+          <span class="text-sm text-gray-500 dark:text-gray-400 mb-4">Apple Silicon & Intel</span>
+          <span class="text-blue-600 dark:text-blue-400 text-sm font-medium group-hover:underline">{t('download.macos')}</span>
+        </a>
+
+        <!-- Windows -->
+        <a href="https://github.com/mamahuhu-io/auk/releases" class="group relative flex flex-col items-center p-6 bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-xl transition-all border border-gray-200 dark:border-gray-700 w-64">
+          <div class="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-full mb-4 group-hover:scale-110 transition-transform">
+             <Monitor className="w-8 h-8 text-blue-600 dark:text-blue-400" />
+          </div>
+          <span class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Windows</span>
+          <span class="text-sm text-gray-500 dark:text-gray-400 mb-4">Windows 10 & 11</span>
+          <span class="text-blue-600 dark:text-blue-400 text-sm font-medium group-hover:underline">{t('download.windows')}</span>
+        </a>
+
+        <!-- Linux -->
+        <a href="https://github.com/mamahuhu-io/auk/releases" class="group relative flex flex-col items-center p-6 bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-xl transition-all border border-gray-200 dark:border-gray-700 w-64">
+          <div class="p-3 bg-orange-100 dark:bg-orange-900/30 rounded-full mb-4 group-hover:scale-110 transition-transform">
+             <Terminal className="w-8 h-8 text-orange-600 dark:text-orange-400" />
+          </div>
+          <span class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Linux</span>
+          <span class="text-sm text-gray-500 dark:text-gray-400 mb-4">Debian, Ubuntu, Arch</span>
+          <span class="text-blue-600 dark:text-blue-400 text-sm font-medium group-hover:underline">{t('download.linux')}</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

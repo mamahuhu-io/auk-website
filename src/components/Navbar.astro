@@ -1,0 +1,41 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { languages } from '../i18n/ui';
+import ThemeToggle from './ThemeToggle';
+import LanguagePicker from './LanguagePicker';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<nav class="sticky top-0 z-50 w-full backdrop-blur-lg bg-white/75 dark:bg-gray-950/75 border-b border-gray-200 dark:border-gray-800">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex h-16 items-center justify-between">
+      <div class="flex-shrink-0">
+        <a href={`/${lang === 'en' ? '' : lang}`} class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+          Auk
+        </a>
+      </div>
+      <div class="hidden md:block">
+        <div class="ml-10 flex items-baseline space-x-8">
+          <a href="#features" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+            {t('nav.features')}
+          </a>
+          <a href="#about" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+            {t('nav.about')}
+          </a>
+          <a href="#download" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+            {t('nav.download')}
+          </a>
+          <a href="https://auk.mamahuhu.dev" target="_blank" rel="noopener noreferrer" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+            {t('nav.docs')}
+          </a>
+        </div>
+      </div>
+      <div class="flex items-center gap-4">
+        <LanguagePicker client:load currentLang={lang} languages={languages} />
+        <ThemeToggle client:load />
+      </div>
+    </div>
+  </div>
+</nav>
