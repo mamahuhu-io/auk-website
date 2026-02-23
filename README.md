@@ -45,13 +45,21 @@ Auk 官方网站，基于 Astro 构建的现代化静态网站。
 
 ## 🌐 部署
 
-网站部署在阿里云，通过 CI/CD 自动构建和发布。
+网站部署在 Cloudflare Pages，通过 Git 集成自动构建和发布。
+
+详细的部署指南请查看 [CLOUDFLARE_DEPLOYMENT.md](./CLOUDFLARE_DEPLOYMENT.md)。
+
+### 快速部署配置
+
+- **构建命令**: `npm run build`
+- **构建输出目录**: `dist`
+- **Node.js 版本**: 18+
 
 ## 📝 开发指南
 
 1. 克隆仓库
 ```bash
-git clone git@github.com:mamahuhu-io/auk-website.git
+git clone git@codeup.aliyun.com:188/mamahuhu/auk-website.git
 cd auk-website
 ```
 
@@ -69,9 +77,10 @@ npm run dev
 
 ## 🔗 相关链接
 
-- [Auk 主仓库](https://github.com/mamahuhu-io/auk)
+- [Auk 主仓库](https://codeup.aliyun.com/188/mamahuhu/auk)
 - [Auk 文档](https://auk.mamahuhu.dev)
 - [Astro 文档](https://docs.astro.build)
+- [Cloudflare Pages 部署指南](./CLOUDFLARE_DEPLOYMENT.md)
 
 ## 📄 许可证
 
