@@ -53,7 +53,14 @@ const t = useTranslations(lang);
       <img 
         src="/connection-to-self-hosted-instance.png" 
         alt="Auk Application Screenshot" 
-        class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"
+        class="absolute inset-0 w-full h-full object-cover opacity-100 transition-transform duration-500 group-hover:scale-[1.01] z-10"
+        onerror="this.style.display='none'"
+      />
+      <img
+        src="/connection-to-self-hosted-instance-dark.png"
+        alt=""
+        aria-hidden="true"
+        class="absolute inset-0 w-full h-full object-cover opacity-0 dark:opacity-100 transition-transform duration-500 group-hover:scale-[1.01] z-20"
         onerror="this.style.display='none'"
       />
       <div class="text-center p-8 z-0">
@@ -62,7 +69,7 @@ const t = useTranslations(lang);
           {lang === 'zh' ? '在此处放置应用截图' : 'Application Screenshot Placeholder'}
         </p>
         <p class="text-sm text-gray-400 dark:text-gray-500 mt-2">
-          (Optional: Place /public/connection-to-self-hosted-instance.png to show real screenshot)
+          (Optional: Place /public/connection-to-self-hosted-instance.png for light mode and /public/connection-to-self-hosted-instance-dark.png for dark mode)
         </p>
       </div>
       <!-- Overlay gradient -->
